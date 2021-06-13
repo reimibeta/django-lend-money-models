@@ -1,2 +1,2 @@
-# django-lending-models
- django lending models
+# django-lending-money-models
+ django lending money models
