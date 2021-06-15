@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'wallet_models.apps.WalletConfig',
     # lends
     'lend_models.apps.LendConfig',
+    # Filter
+    'django_admin_listfilter_dropdown',
 ]
 
 MIDDLEWARE = [
