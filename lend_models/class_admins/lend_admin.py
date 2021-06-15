@@ -3,8 +3,8 @@ from django.contrib import admin
 from django.db.models import Sum
 from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter, DropdownFilter
 
-from lends.class_admins.lend_amount_admin import LendAmountInlineAdmin
-from lends.class_models.lend import Lend
+from lend_models.class_admins.lend_amount_admin import LendAmountInlineAdmin
+from lend_models.class_models.lend import Lend
 
 
 class LendAdmin(admin.ModelAdmin):

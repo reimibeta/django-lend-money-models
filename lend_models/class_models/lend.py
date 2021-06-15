@@ -5,7 +5,7 @@ from django.db import models
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
 
-from lends.class_models.lend_client import LendClient
+from lend_models.class_models.lend_client import LendClient
 
 
 class Lend(models.Model):

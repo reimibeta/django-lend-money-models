@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class LendingConfig(AppConfig):
-    name = 'lending_models'
+class LendConfig(AppConfig):
+    name = 'lend_models'
     verbose_name = 'Lends'

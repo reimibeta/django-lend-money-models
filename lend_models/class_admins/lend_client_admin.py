@@ -2,7 +2,7 @@
 from django.contrib import admin
 from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter, DropdownFilter
 
-from lends.class_models.lend_client import LendClientSet, LendClient
+from lend_models.class_models.lend_client import LendClientSet, LendClient
 
 
 class LendClientSetAdmin(admin.ModelAdmin):

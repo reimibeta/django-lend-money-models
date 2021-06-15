@@ -6,7 +6,7 @@ from django.dispatch import receiver
 from wallet_models.class_apps.balances.outlets.balance_outlet import BalanceOutlet, BalanceUpdate, BalanceRefund
 from wallet_models.class_models.wallet import Wallet
 
-from lends.class_models.lend import Lend
+from lend_models.class_models.lend import Lend
 
 
 class LendAmount(models.Model):
