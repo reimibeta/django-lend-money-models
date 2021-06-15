@@ -29,6 +29,7 @@ class LendAmount(models.Model):
     #     verbose_name='Interest %'
     # )
     note = models.CharField(max_length=250, blank=True, null=True)
+    is_withdraw = models.BooleanField(default=True)
     is_return = models.BooleanField(
         default=False,
     )
@@ -47,12 +48,13 @@ class LendAmount(models.Model):
 @receiver(post_save, sender=LendAmount)
 def add(sender, instance, created, **kwargs):
     if created:
+        pass
         # account
-        BalanceOutlet(
-            current_condition=instance.is_return,
-            current_instance=instance,
-            current_amount=instance.amount
-        ).outlet()
+        # BalanceOutlet(
+        #     current_condition=instance.is_return,
+        #     current_instance=instance,
+        #     current_amount=instance.amount
+        # ).outlet()
 
 
 @receiver(pre_save, sender=LendAmount)
@@ -62,21 +64,21 @@ def update(sender, instance, **kwargs):
     else:
         old_value = LendAmount.objects.get(id=instance.id)
         # account
-        BalanceUpdate(
-            current_condition=instance.is_return,
-            current_instance=instance,
-            current_amount=instance.amount,
-            last_condition=old_value.is_return,
-            last_instance=old_value,
-            last_amount=old_value.amount
-        ).update()
+        # BalanceUpdate(
+        #     current_condition=instance.is_return,
+        #     current_instance=instance,
+        #     current_amount=instance.amount,
+        #     last_condition=old_value.is_return,
+        #     last_instance=old_value,
+        #     last_amount=old_value.amount
+        # ).update()
 
 
 @receiver(pre_delete, sender=LendAmount)
 def delete(sender, instance, using, **kwargs):
     old_value = LendAmount.objects.get(id=instance.id)
-    BalanceRefund(
-        last_condition=old_value.is_return,
-        last_instance=old_value,
-        last_amount=old_value.amount
-    ).refund()
+    # BalanceRefund(
+    #     last_condition=old_value.is_return,
+    #     last_instance=old_value,
+    #     last_amount=old_value.amount
+    # ).refund()
