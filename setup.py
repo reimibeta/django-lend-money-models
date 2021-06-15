@@ -10,7 +10,7 @@ import os
 import setuptools
 
 setuptools.setup(
-    name='pcr_order_models',
-    version='1.1.5',
+    name='lend_models',
+    version='1.0.0',
     packages=setuptools.find_packages()
 )
