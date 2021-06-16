@@ -6,6 +6,7 @@ from django.dispatch import receiver
 from wallet_models.class_apps.balances.outlets.balance_outlet import BalanceOutlet, BalanceUpdate, BalanceRefund
 from wallet_models.class_models.wallet import Wallet
 
+from lend_models.class_apps.lending_money_condition import LendingMoneyWithdraw, LendingMoneyReturn
 from lend_models.class_models.lend import Lend
 
 
@@ -55,6 +56,12 @@ def add(sender, instance, created, **kwargs):
         #     current_instance=instance,
         #     current_amount=instance.amount
         # ).outlet()
+        LendingMoneyWithdraw(
+            is_return=instance.is_return,
+            is_withdraw=instance.is_withdraw,
+            pk=instance.account.id,
+            amount=instance.amount
+        ).withdraw_money()
 
 
 @receiver(pre_save, sender=LendAmount)
@@ -77,6 +84,12 @@ def update(sender, instance, **kwargs):
 @receiver(pre_delete, sender=LendAmount)
 def delete(sender, instance, using, **kwargs):
     old_value = LendAmount.objects.get(id=instance.id)
+    LendingMoneyReturn(
+        is_return=old_value.is_return,
+        is_withdraw=old_value.is_withdraw,
+        pk=old_value.account.id,
+        amount=old_value.amount
+    ).return_money()
     # BalanceRefund(
     #     last_condition=old_value.is_return,
     #     last_instance=old_value,
