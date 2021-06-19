@@ -4,7 +4,7 @@ django-cleanup==5.2.0
 djangorestframework==3.12.4
 djangorestframework-simplejwt==4.7.0
 drf-flex-fields==0.9.0
-django-datetime @ git+https://github.com/reimibeta/django-datetime.git@1c93aba8fdb7687dab1d0cc60c6f78c51b38ea3c
+django-datetime @ git+https://github.com/reimibeta/django-datetime.git@5728f452cfa0ed1259321f5b71953324e840d198
 django-html-render @ git+https://github.com/reimibeta/django-html-render.git@03de9608e80fd65bdbce4dbfa6dd7b5f555895a0
 django-rest-framework @ git+https://github.com/reimibeta/django-rest-framework.git@503852d3fda3717b0de0932a216d27caa668e743
 wallet-models @ git+https://github.com/reimibeta/django-wallet-models.git@1429f8465b2923c689fc48673e0ff94fbffbee7a

@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-from datetime_utils.date_time import DateTime
+from django_datetime.datetime import datetime
 from django.db import models
 from django.db.models.signals import post_save, post_delete, pre_save
 from django.dispatch import receiver
@@ -15,7 +15,7 @@ class LendClientSet(models.Model):
 
 class LendClient(models.Model):
     client = models.ForeignKey(LendClientSet, on_delete=models.CASCADE)
-    created_date = models.DateField(default=DateTime.datenow)
+    created_date = models.DateField(default=datetime.dnow())
     updated_date = models.DateField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
 
@@ -38,7 +38,7 @@ def update(sender, instance, **kwargs):
         pass
     else:
         if instance.updated_date is None:
-            instance.updated_date = DateTime.datenow()
+            instance.updated_date = datetime.dnow(str=True)
 
 # @receiver(post_delete, sender=LendClient)
 # def delete(sender, instance, using, **kwargs):
